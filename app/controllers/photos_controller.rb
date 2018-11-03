@@ -1,3 +1,4 @@
+require 'rake'
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
@@ -5,11 +6,16 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.all
+    Rails.application.load_tasks
+    Rake::Task['task_sample:sample'].execute
+    Rake::Task['task_sample:sample'].clear
   end
 
   # GET /photos/1
   # GET /photos/1.json
   def show
+
+
   end
 
   # GET /photos/new
